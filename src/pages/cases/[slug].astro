@@ -196,4 +196,31 @@ const { Content } = await render(caseEntry);
       position: static;
     }
   }
+
+  @media (max-width: 480px) {
+    .case-hero {
+      padding: 46px 0 58px;
+    }
+
+    h1 {
+      font-size: 40px;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .case-hero p,
+    .result,
+    .content-body {
+      font-size: 16px;
+    }
+
+    .case-metrics,
+    .detail-aside {
+      padding: 22px;
+    }
+
+    .detail-content h2 {
+      font-size: 34px;
+    }
+  }
 </style>

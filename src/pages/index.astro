@@ -241,6 +241,20 @@ const sortedCases = cases.sort((a, b) => {
     line-height: 1.42;
   }
 
+  .hero-copy,
+  .hero-proof {
+    min-width: 0;
+  }
+
+  .hero h1,
+  .hero-copy p {
+    overflow-wrap: break-word;
+  }
+
+  .hero-actions {
+    min-width: 0;
+  }
+
   .hero-actions {
     display: flex;
     flex-wrap: wrap;
@@ -452,6 +466,41 @@ const sortedCases = cases.sort((a, b) => {
     .tools-copy,
     .tool-tags {
       grid-column: auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      padding: 62px 0 54px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .hero-copy p,
+    .hero-proof p {
+      font-size: 16px;
+    }
+
+    .hero-proof,
+    .value-card,
+    .approach-steps > div,
+    .artifact-card {
+      padding: 22px;
+    }
+
+    .situations-title h2,
+    .tools-copy h2 {
+      font-size: 34px;
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+    }
+
+    .situation-item p {
+      font-size: 16px;
     }
   }
 </style>

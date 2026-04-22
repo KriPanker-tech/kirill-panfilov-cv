@@ -17,6 +17,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  overflow-x: clip;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -47,6 +52,7 @@ textarea {
 .container {
   width: min(100% - 32px, var(--container));
   margin: 0 auto;
+  min-width: 0;
 }
 
 .section {
@@ -60,6 +66,7 @@ textarea {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .section-title {
@@ -68,6 +75,7 @@ textarea {
   font-size: clamp(36px, 5vw, 64px);
   line-height: 0.98;
   letter-spacing: -0.055em;
+  overflow-wrap: break-word;
 }
 
 .section-copy {
@@ -81,6 +89,11 @@ textarea {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 24px;
+}
+
+.grid-12 > *,
+.card {
+  min-width: 0;
 }
 
 .card {
@@ -172,5 +185,21 @@ textarea {
 
   .grid-12 {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: min(100% - 28px, var(--container));
+  }
+
+  .section-title {
+    font-size: 34px;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
+
+  .section-copy {
+    font-size: 16px;
   }
 }
