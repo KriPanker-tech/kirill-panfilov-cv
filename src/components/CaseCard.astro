@@ -1,0 +1,131 @@
+---
+import MetricItem from "./MetricItem.astro";
+import { localPath } from "../utils/links";
+
+interface Metric {
+  label: string;
+  value: string;
+  caption: string;
+}
+
+interface Props {
+  slug: string;
+  company: string;
+  title: string;
+  context: string;
+  summary: string;
+  metrics: Metric[];
+  tags: string[];
+}
+
+const { slug, company, title, context, summary, metrics, tags } = Astro.props;
+---
+
+<article class="case-card card">
+  <div class="case-meta">
+    <span>{context}</span>
+    <h3>{company}</h3>
+    <div class="tag-list">
+      {tags.map((tag) => <span class="tag">{tag}</span>)}
+    </div>
+  </div>
+  <div class="case-body">
+    <h4>{title}</h4>
+    <p>{summary}</p>
+    <div class="case-metrics">
+      {metrics.slice(0, 3).map((metric) => <MetricItem {...metric} />)}
+    </div>
+    <a class="case-link" href={localPath(`/cases/${slug}/`)}>Читать кейс</a>
+  </div>
+</article>
+
+<style>
+  .case-card {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.38fr) minmax(0, 1fr);
+    overflow: hidden;
+  }
+
+  .case-meta {
+    display: grid;
+    align-content: space-between;
+    gap: 28px;
+    border-right: 1px solid var(--line);
+    background: var(--surface-soft);
+    padding: 30px;
+  }
+
+  .case-meta > span {
+    color: var(--muted);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  h3,
+  h4,
+  p {
+    margin: 0;
+  }
+
+  h3 {
+    font-size: 28px;
+    letter-spacing: -0.045em;
+  }
+
+  h4 {
+    max-width: 720px;
+    font-size: clamp(26px, 4vw, 42px);
+    line-height: 1.03;
+    letter-spacing: -0.055em;
+  }
+
+  .case-body {
+    padding: 34px;
+  }
+
+  .case-body > p {
+    max-width: 680px;
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: 18px;
+  }
+
+  .case-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 32px;
+    border-top: 1px solid var(--line);
+    padding-top: 26px;
+  }
+
+  .case-link {
+    display: inline-flex;
+    margin-top: 28px;
+    color: var(--accent);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .case-link:hover {
+    color: var(--dark);
+  }
+
+  @media (max-width: 820px) {
+    .case-card,
+    .case-metrics {
+      grid-template-columns: 1fr;
+    }
+
+    .case-meta {
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+    }
+  }
+</style>

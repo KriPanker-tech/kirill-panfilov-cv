@@ -1,0 +1,67 @@
+---
+import { site } from "../data/site";
+---
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <strong>{site.name}</strong>
+      <p>{site.thesis}</p>
+    </div>
+    <div class="footer-links">
+      <a href={site.telegram}>Telegram</a>
+      <a href={site.channel}>Telegram-канал</a>
+      <a href={site.emailHref}>{site.email}</a>
+      <a href={site.phoneHref}>{site.phone}</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--line);
+    padding: 36px 0;
+    background: #fff;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 28px;
+    align-items: start;
+  }
+
+  strong {
+    display: block;
+    font-size: 20px;
+    letter-spacing: -0.035em;
+  }
+
+  p {
+    max-width: 560px;
+    margin: 8px 0 0;
+    color: var(--muted);
+  }
+
+  .footer-links {
+    display: grid;
+    gap: 8px;
+    justify-items: end;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .footer-links a:hover {
+    color: var(--ink);
+  }
+
+  @media (max-width: 780px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-links {
+      justify-items: start;
+    }
+  }
+</style>

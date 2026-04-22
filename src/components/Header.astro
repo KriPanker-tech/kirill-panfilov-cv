@@ -1,0 +1,82 @@
+---
+import { navigation, site } from "../data/site";
+import { localPath } from "../utils/links";
+---
+
+<header class="site-header">
+  <nav class="container header-inner" aria-label="Главная навигация">
+    <a class="brand" href={localPath("/")}>
+      <span>Кирилл Панфилов</span>
+      <small>{site.role}</small>
+    </a>
+    <div class="nav-links">
+      {navigation.map((item) => <a href={localPath(`/${item.href}`)}>{item.label}</a>)}
+    </div>
+    <a class="header-cta" href={site.telegram}>Написать</a>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 1px solid rgba(215, 221, 226, 0.84);
+    background: rgba(251, 252, 253, 0.86);
+    backdrop-filter: blur(18px);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 74px;
+    gap: 24px;
+  }
+
+  .brand {
+    display: grid;
+    gap: 2px;
+  }
+
+  .brand span {
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+
+  .brand small {
+    color: var(--muted);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 22px;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .nav-links a:hover {
+    color: var(--ink);
+  }
+
+  .header-cta {
+    border: 1px solid var(--dark);
+    border-radius: 999px;
+    background: var(--dark);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 16px;
+  }
+
+  @media (max-width: 860px) {
+    .nav-links {
+      display: none;
+    }
+  }
+</style>

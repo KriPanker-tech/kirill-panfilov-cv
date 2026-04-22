@@ -1,0 +1,83 @@
+---
+import { site } from "../data/site";
+---
+
+<section class="section contact" id="contacts">
+  <div class="container contact-panel">
+    <div>
+      <span class="eyebrow">Контакт</span>
+      <h2>Готов к диалогу</h2>
+      <p>
+        Если вам нужен маркетинг-руководитель, который понимает связь маркетинга
+        с бизнес-целями, выручкой, клиентами и продажами, нам есть о чём поговорить.
+      </p>
+    </div>
+    <div class="contact-actions">
+      <a class="button" href={site.telegram}>Написать в Telegram</a>
+      <a class="button secondary" href={site.emailHref}>{site.email}</a>
+      <a href={site.phoneHref}>{site.phone}</a>
+      <a href={site.channel}>Telegram-канал: полезная и интересная информация</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding-top: 0;
+  }
+
+  .contact-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 36px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--dark);
+    color: white;
+    padding: clamp(28px, 5vw, 56px);
+    box-shadow: var(--shadow);
+  }
+
+  h2 {
+    max-width: 620px;
+    margin: 14px 0 0;
+    font-size: clamp(38px, 6vw, 76px);
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+  }
+
+  p {
+    max-width: 660px;
+    margin: 22px 0 0;
+    color: rgba(255, 255, 255, 0.74);
+    font-size: 19px;
+  }
+
+  .contact-actions {
+    display: grid;
+    align-content: center;
+    gap: 14px;
+  }
+
+  .contact-actions .button {
+    border-color: white;
+    background: white;
+    color: var(--dark);
+  }
+
+  .contact-actions .button.secondary {
+    background: transparent;
+    color: white;
+  }
+
+  .contact-actions > a:not(.button) {
+    color: rgba(255, 255, 255, 0.78);
+    font-weight: 600;
+  }
+
+  @media (max-width: 840px) {
+    .contact-panel {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

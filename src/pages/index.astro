@@ -1,0 +1,457 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import CaseCard from "../components/CaseCard.astro";
+import ContactBlock from "../components/ContactBlock.astro";
+import { artifacts } from "../data/artifacts";
+import { site } from "../data/site";
+
+const cases = await getCollection("cases");
+const order = ["ispring-learn", "stream-telecom", "sendsay"];
+const sortedCases = cases.sort((a, b) => {
+  const aSlug = (a as any).slug ?? a.id.replace(/\.md$/, "");
+  const bSlug = (b as any).slug ?? b.id.replace(/\.md$/, "");
+  return order.indexOf(aSlug) - order.indexOf(bSlug);
+});
+---
+
+<BaseLayout
+  title="Кирилл Панфилов - Head of Marketing"
+  description="Резюме-сайт Кирилла Панфилова: маркетинг, связанный с pipeline, CAC, P&L, unit-экономикой и новыми клиентами."
+>
+  <Header />
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Head of Marketing / B2B SaaS / EdTech / MarTech</span>
+          <h1>Маркетинг-руководитель, который связывает маркетинг с выручкой</h1>
+          <p>
+            Я собираю маркетинг как функцию, которая работает рядом с бизнес-целями:
+            приводит новых клиентов, влияет на pipeline, понимает CAC, unit-экономику,
+            P&L и помогает продажам двигать сделку быстрее.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href={site.telegram}>Написать в Telegram</a>
+            <a class="button secondary" href="#cases">Смотреть кейсы</a>
+          </div>
+        </div>
+        <aside class="hero-proof card" aria-label="Короткое позиционирование">
+          <span class="proof-label">Сильная зона</span>
+          <p>
+            Сложные продукты, длинный цикл сделки, несколько участников в принятии
+            решения и высокая цена ошибки в позиционировании.
+          </p>
+          <div class="proof-line"></div>
+          <p>
+            Если компании нужен человек, который может говорить с продуктом,
+            продажами, аналитикой и руководством на одном языке, я как раз про это.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Что я приношу в команду"
+          title="Маркетинг ближе к деньгам, а не к отчётам ради отчётов"
+          copy="Я хорошо работаю там, где кампании, сайт, контент и аналитика должны объясняться через влияние на клиентов, pipeline и выручку."
+        />
+        <div class="value-grid">
+          <div class="card value-card">
+            <span>01</span>
+            <h3>Вижу всю коммерческую связку</h3>
+            <p>
+              Сегмент, оффер, сайт, контент, продажи и экономика сделки должны
+              работать вместе. Иначе маркетинг может быть активным, но не двигать
+              выручку.
+            </p>
+          </div>
+          <div class="card value-card">
+            <span>02</span>
+            <h3>Умею разбирать слабые места</h3>
+            <p>
+              Почему лиды есть, а pipeline не растёт. Почему продукт сильный, но
+              рынок не считывает пользу. Почему CAC растёт, а причина неочевидна.
+            </p>
+          </div>
+          <div class="card value-card">
+            <span>03</span>
+            <h3>Связываю маркетинг с продажами</h3>
+            <p>
+              Для меня маркетинг - часть коммерческой работы: от ICP и пользы до
+              качества SQL, скорости сделки, CAC, LTV и понятной аналитики.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section situations">
+      <div class="container grid-12">
+        <div class="situations-title">
+          <span class="eyebrow">Где особенно полезен</span>
+          <h2>В компаниях, где продукт уже есть, а маркетинг нужно сделать взрослым</h2>
+        </div>
+        <div class="situations-list card">
+          {[
+            "нужно увеличить поток целевых лидов, а не просто заявок",
+            "продажи спорят с маркетингом о качестве лидов",
+            "сайт и материалы не помогают быстро объяснить пользу продукта",
+            "сложный B2B-продукт приходится долго продавать словами основателей или сильных сейлзов",
+            "есть много контента и активностей, но непонятно, что из этого влияет на деньги",
+            "нужно выстроить связку маркетинг + продажи + продукт + аналитика"
+          ].map((item) => (
+            <div class="situation-item">
+              <span></span>
+              <p>{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section approach" id="approach">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Как я работаю внутри бизнеса"
+          title="Сначала нахожу, где теряется результат. Потом собираю маршрут действий"
+          copy="Иногда это позиционирование. Иногда лидогенерация. Иногда критерии SQL, структура лендинга, контентная логика, сквозная аналитика или sales enablement."
+        />
+        <div class="approach-steps">
+          <div>
+            <span>01</span>
+            <h3>Диагностика</h3>
+            <p>Смотрю сегмент, сообщение, воронку, каналы, материалы для продаж, аналитику и стык маркетинга с продажами.</p>
+          </div>
+          <div>
+            <span>02</span>
+            <h3>Фокус</h3>
+            <p>Выбираю самый важный участок, где изменение быстрее всего влияет на pipeline, качество лидов или скорость сделки.</p>
+          </div>
+          <div>
+            <span>03</span>
+            <h3>Маршрут</h3>
+            <p>Фиксирую, что делаем сейчас, какие метрики должны измениться, кто внутри компании на что влияет и как проверяем результат.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cases">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Кейсы"
+          title="Результаты, где маркетинг связан с pipeline, CAC и продажами"
+          copy="На главной только короткая выжимка. Подробности вынесены на отдельные страницы, чтобы не перегружать лендинг."
+        />
+        <div class="case-list">
+          {sortedCases.map((caseItem) => {
+            const slug = (caseItem as any).slug ?? caseItem.id.replace(/\.md$/, "");
+            return <CaseCard slug={slug} {...caseItem.data} />;
+          })}
+        </div>
+      </div>
+    </section>
+
+    <section class="section tools">
+      <div class="container grid-12">
+        <div class="tools-copy">
+          <span class="eyebrow">Рабочие зоны</span>
+          <h2>Что использую в работе</h2>
+          <p>
+            Мне важно, чтобы маркетинг был понятен бизнесу: сколько стоит
+            привлечение, как растёт pipeline, где теряются сделки и почему команда
+            делает именно эти действия.
+          </p>
+        </div>
+        <div class="tool-tags">
+          {[
+            "Demand Generation",
+            "Product Marketing",
+            "GTM и позиционирование",
+            "Unit-экономика",
+            "CAC / LTV / pipeline",
+            "Связка маркетинга с продажами",
+            "GA4",
+            "AmoCRM / Bitrix24",
+            "SQL на базовом уровне",
+            "Python и AI-инструменты",
+            "Управление командами 5+ человек"
+          ].map((tool) => <span>{tool}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="artifacts">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Публикации и артефакты"
+          title="Как я думаю о маркетинге, аналитике и AI"
+          copy="Это proof-layer: материалы, по которым можно увидеть способ мышления и рабочую оптику."
+        />
+        <div class="artifact-grid">
+          {artifacts.map((artifact) => (
+            <a class="artifact-card card" href={artifact.href} target="_blank" rel="noreferrer">
+              <span>{artifact.type}</span>
+              <h3>{artifact.title}</h3>
+              <p>{artifact.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <ContactBlock />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 96px 0 84px;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.42fr);
+    gap: 48px;
+    align-items: end;
+  }
+
+  .hero h1 {
+    max-width: 900px;
+    margin: 18px 0 0;
+    font-size: clamp(52px, 8vw, 108px);
+    line-height: 0.92;
+    letter-spacing: -0.075em;
+  }
+
+  .hero-copy p {
+    max-width: 760px;
+    margin: 28px 0 0;
+    color: var(--muted);
+    font-size: clamp(19px, 2.2vw, 24px);
+    line-height: 1.42;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+  }
+
+  .hero-proof {
+    padding: 28px;
+  }
+
+  .proof-label {
+    color: var(--accent);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero-proof p {
+    margin: 18px 0 0;
+    color: #2e3845;
+    font-size: 18px;
+  }
+
+  .proof-line {
+    height: 1px;
+    margin: 24px 0;
+    background: var(--line);
+  }
+
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 36px;
+  }
+
+  .value-card {
+    padding: 28px;
+  }
+
+  .value-card span,
+  .approach-steps span {
+    color: var(--accent);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .value-card h3,
+  .approach-steps h3,
+  .artifact-card h3 {
+    margin: 18px 0 0;
+    font-size: 24px;
+    line-height: 1.1;
+    letter-spacing: -0.045em;
+  }
+
+  .value-card p,
+  .approach-steps p,
+  .artifact-card p,
+  .tools-copy p {
+    margin: 14px 0 0;
+    color: var(--muted);
+  }
+
+  .situations {
+    background: rgba(255, 255, 255, 0.54);
+    border-block: 1px solid var(--line);
+  }
+
+  .situations-title {
+    grid-column: span 5;
+  }
+
+  .situations-title h2,
+  .tools-copy h2 {
+    margin: 14px 0 0;
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+  }
+
+  .situations-list {
+    grid-column: span 7;
+    padding: 12px 28px;
+  }
+
+  .situation-item {
+    display: grid;
+    grid-template-columns: 10px minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+    border-bottom: 1px solid var(--line);
+    padding: 20px 0;
+  }
+
+  .situation-item:last-child {
+    border-bottom: 0;
+  }
+
+  .situation-item span {
+    width: 8px;
+    height: 8px;
+    margin-top: 8px;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  .situation-item p {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .approach-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    margin-top: 36px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--line);
+  }
+
+  .approach-steps > div {
+    background: white;
+    padding: 30px;
+  }
+
+  .case-list {
+    display: grid;
+    gap: 24px;
+    margin-top: 38px;
+  }
+
+  .tools {
+    background: var(--dark);
+    color: white;
+  }
+
+  .tools-copy {
+    grid-column: span 5;
+  }
+
+  .tools-copy p {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 18px;
+  }
+
+  .tool-tags {
+    grid-column: span 7;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-content: start;
+  }
+
+  .tool-tags span {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 10px 14px;
+    color: rgba(255, 255, 255, 0.86);
+    font-weight: 600;
+  }
+
+  .artifact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 36px;
+  }
+
+  .artifact-card {
+    display: grid;
+    align-content: start;
+    min-height: 260px;
+    padding: 24px;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .artifact-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+  }
+
+  .artifact-card span {
+    color: var(--accent);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 920px) {
+    .hero-grid,
+    .value-grid,
+    .approach-steps,
+    .artifact-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .situations-title,
+    .situations-list,
+    .tools-copy,
+    .tool-tags {
+      grid-column: auto;
+    }
+  }
+</style>
