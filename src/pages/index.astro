@@ -6,7 +6,7 @@ import Footer from "../components/Footer.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import CaseCard from "../components/CaseCard.astro";
 import ContactBlock from "../components/ContactBlock.astro";
-import { artifacts } from "../data/artifacts";
+import { publications, workArtifacts } from "../data/artifacts";
 import { site } from "../data/site";
 
 const cases = await getCollection("cases");
@@ -59,7 +59,7 @@ const sortedCases = cases.sort((a, b) => {
       <div class="container">
         <SectionHeading
           eyebrow="Что я приношу в команду"
-          title="Маркетинг ближе к деньгам, а не к отчётам ради отчётов"
+          title="Маркетинг, который видно в клиентах, pipeline и выручке"
           copy="Я хорошо работаю там, где кампании, сайт, контент и аналитика должны объясняться через влияние на клиентов, pipeline и выручку."
         />
         <div class="value-grid">
@@ -96,7 +96,7 @@ const sortedCases = cases.sort((a, b) => {
       <div class="container grid-12">
         <div class="situations-title">
           <span class="eyebrow">Где особенно полезен</span>
-          <h2>В компаниях, где продукт уже есть, а маркетинг нужно сделать взрослым</h2>
+          <h2>В командах, где маркетинг должен быть ближе к продукту, продажам и выручке</h2>
         </div>
         <div class="situations-list card">
           {[
@@ -148,7 +148,6 @@ const sortedCases = cases.sort((a, b) => {
         <SectionHeading
           eyebrow="Кейсы"
           title="Результаты, где маркетинг связан с pipeline, CAC и продажами"
-          copy="На главной только короткая выжимка. Подробности вынесены на отдельные страницы, чтобы не перегружать лендинг."
         />
         <div class="case-list">
           {sortedCases.map((caseItem) => {
@@ -193,10 +192,22 @@ const sortedCases = cases.sort((a, b) => {
         <SectionHeading
           eyebrow="Публикации и артефакты"
           title="Как я думаю о маркетинге, аналитике и AI"
-          copy="Это proof-layer: материалы, по которым можно увидеть способ мышления и рабочую оптику."
         />
         <div class="artifact-grid">
-          {artifacts.map((artifact) => (
+          {publications.map((artifact) => (
+            <a class="artifact-card card" href={artifact.href} target="_blank" rel="noreferrer">
+              <span>{artifact.type}</span>
+              <h3>{artifact.title}</h3>
+              <p>{artifact.description}</p>
+            </a>
+          ))}
+        </div>
+        <div class="artifact-subheading">
+          <h3>Артефакты</h3>
+          <p>Отдельные страницы, документы и материалы из проектов, которые можно открыть и посмотреть.</p>
+        </div>
+        <div class="artifact-grid artifact-grid-secondary">
+          {workArtifacts.map((artifact) => (
             <a class="artifact-card card" href={artifact.href} target="_blank" rel="noreferrer">
               <span>{artifact.type}</span>
               <h3>{artifact.title}</h3>
@@ -229,7 +240,7 @@ const sortedCases = cases.sort((a, b) => {
     max-width: 900px;
     margin: 18px 0 0;
     font-size: clamp(52px, 8vw, 108px);
-    line-height: 0.92;
+    line-height: 0.97;
     letter-spacing: -0.075em;
   }
 
@@ -426,9 +437,31 @@ const sortedCases = cases.sort((a, b) => {
 
   .artifact-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
     margin-top: 36px;
+  }
+
+  .artifact-grid-secondary {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .artifact-subheading {
+    max-width: 720px;
+    margin-top: 44px;
+  }
+
+  .artifact-subheading h3 {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+
+  .artifact-subheading p {
+    margin: 14px 0 0;
+    color: var(--muted);
+    font-size: 18px;
   }
 
   .artifact-card {
@@ -476,7 +509,7 @@ const sortedCases = cases.sort((a, b) => {
 
     .hero h1 {
       font-size: 42px;
-      line-height: 0.98;
+      line-height: 1.02;
       letter-spacing: -0.055em;
     }
 

@@ -7,8 +7,8 @@ export const site = {
   channel: "https://t.me/prosto_pro_marketingAI",
   phone: "+7 (999) 226-23-69",
   phoneHref: "tel:+79992262369",
-  email: "panfilovk@gmail.com",
-  emailHref: "mailto:panfilovk@gmail.com"
+  email: "panfilovkey@gmail.com",
+  emailHref: "mailto:panfilovkey@gmail.com"
 };
 
 export const navigation = [
