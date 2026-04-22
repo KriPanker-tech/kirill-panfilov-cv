@@ -195,7 +195,7 @@ const sortedCases = cases.sort((a, b) => {
         />
         <div class="artifact-grid">
           {publications.map((artifact) => (
-            <a class="artifact-card card" href={artifact.href} target="_blank" rel="noreferrer">
+            <a class="artifact-card card" href={artifact.href} target="_blank" rel="noopener noreferrer">
               <span>{artifact.type}</span>
               <h3>{artifact.title}</h3>
               <p>{artifact.description}</p>
@@ -208,7 +208,7 @@ const sortedCases = cases.sort((a, b) => {
         </div>
         <div class="artifact-grid artifact-grid-secondary">
           {workArtifacts.map((artifact) => (
-            <a class="artifact-card card" href={artifact.href} target="_blank" rel="noreferrer">
+            <a class="artifact-card card" href={artifact.href} target="_blank" rel="noopener noreferrer">
               <span>{artifact.type}</span>
               <h3>{artifact.title}</h3>
               <p>{artifact.description}</p>
