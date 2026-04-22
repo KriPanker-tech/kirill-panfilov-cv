@@ -24,8 +24,17 @@ const { Content } = await render(caseEntry);
 ---
 
 <BaseLayout
-  title={`${caseEntry.data.company} - кейс Кирилла Панфилова`}
-  description={caseEntry.data.summary}
+  title={caseEntry.data.seoTitle}
+  description={caseEntry.data.seoDescription}
+  type="article"
+  keywords={[
+    caseEntry.data.company,
+    "Кирилл Панфилов",
+    "кейс маркетинга",
+    "B2B маркетинг",
+    ...caseEntry.data.industry,
+    ...caseEntry.data.tags
+  ]}
 >
   <Header />
 

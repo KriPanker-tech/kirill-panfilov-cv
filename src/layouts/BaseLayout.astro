@@ -4,9 +4,13 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description: string;
+  type?: "website" | "article";
+  keywords?: string[];
 }
 
-const { title, description } = Astro.props;
+const { title, description, type = "website", keywords = [] } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const siteName = "Кирилл Панфилов";
 
 const contentSecurityPolicy = [
   "default-src 'self'",
@@ -28,10 +32,24 @@ const contentSecurityPolicy = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    {keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="generator" content={Astro.generator} />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     {import.meta.env.PROD && <meta http-equiv="Content-Security-Policy" content={contentSecurityPolicy} />}
     <title>{title}</title>
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" type="application/xml" href="/kirill-panfilov-cv/sitemap.xml" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="theme-color" content="#0b1220" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

@@ -10,6 +10,8 @@ const cases = defineCollection({
     context: z.string(),
     industry: z.array(z.string()),
     summary: z.string(),
+    seoTitle: z.string(),
+    seoDescription: z.string(),
     challenge: z.string(),
     work: z.array(z.string()),
     result: z.string(),

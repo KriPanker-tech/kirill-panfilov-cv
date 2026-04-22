@@ -4,6 +4,8 @@ company: "Stream Telecom"
 context: "MarTech / performance / продукт Stream Target"
 industry: ["MarTech", "B2B", "Performance"]
 summary: "Контент-стратегия, оптимизация performance-каналов, запуск и упаковка Stream Target."
+seoTitle: "Stream Telecom: снижение CAC и рост inbound | Кирилл Панфилов"
+seoDescription: "Кейс Stream Telecom: CAC снизился на 62%, входящий поток вырос в 3 раза, средний чек вырос на 45% после упаковки продукта и каналов."
 challenge: "Нужно было снизить стоимость привлечения и улучшить качество лидов без потери объёма."
 work:
   - "Пересобрал контентную логику под B2B-сегмент и реальные причины покупки."

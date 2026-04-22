@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kripanker-tech.github.io/kirill-panfilov-cv/sitemap.xml
